@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "iconfont";
+    /* Project id 3314858 */
+    src: url('//at.alicdn.com/t/font_3314858_3423y0rgdcd.woff2?t=1649486406548') format('woff2'), url('//at.alicdn.com/t/font_3314858_3423y0rgdcd.woff?t=1649486406548') format('woff'), url('//at.alicdn.com/t/font_3314858_3423y0rgdcd.ttf?t=1649486406548') format('truetype');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    /* font-size: 16px; */
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.icon-weixin1:before {
+    content: "\e600";
+    font-size: 23px;
+    color: rgb(0, 192, 128);
+}
+
+.icon-QQ:before {
+    content: "\e882";
+    font-size: 23px;
+    color: rgba(28, 210, 234, 0.938);
+}
+
+.icon-cmd:before {
+    content: "\e8aa";
+    color: rgb(255, 255, 255);
+}
+
+.icon-java:before {
+    content: "\e60f";
+}
+
+.icon-Python:before {
+    content: "\ed99";
+}
+
+.icon-MySQL-icon-02:before {
+    content: "\e638";
+    color: rgba(28, 210, 234, 0.938);
+}
+
+.icon-social-qq:before {
+    content: "\e626";
+}
+
+.icon-weixin:before {
+    content: "\e62c";
+}
+
+.icon-wenjianjia:before {
+    content: "\e60d";
+}
+
+.icon-JS-file:before {
+    content: "\e60e";
+}
+
+.icon-gitee:before {
+    content: "\e60c";
+    color: rgb(212, 8, 8);
+}
