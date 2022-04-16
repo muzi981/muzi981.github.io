@@ -27,7 +27,7 @@
 .icon-hunliriqi:before {
   content: "\e6a2";
   font-size: 20px;
-  color: #ff557f;
+  /* color: #ff557f; */
 }
 
 .icon-reqiqiu:before {
@@ -50,6 +50,8 @@
 
 .icon-xinxinxiangyin:before {
   content: "\e6a7";
+  color: red;
+  font-size: 20px;
 }
 
 .icon-hunchuang:before {
@@ -59,10 +61,13 @@
 .icon-qiqiu:before {
   content: "\e6a9";
   font-size: 20px;
+  color: pink;
 }
 
 .icon-huanqing:before {
   content: "\e6aa";
+  font-size: 1.25rem;
+  color: pink;
 }
 
 .icon-weixin1:before {
