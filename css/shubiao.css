@@ -115,3 +115,10 @@ body,
 figure.highlight pre .addition {
     color: #00bf03 !important;
 }
+#article-container .gallery-group-main{
+	overflow: auto;
+	padding: 0px;
+}
+#article-container a{
+	/* color: #fffbff; */
+}
