@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3314858 */
+  src: url('//at.alicdn.com/t/font_3314858_nxy8ddpii2n.woff2?t=1650011173145') format('woff2'),
+       url('//at.alicdn.com/t/font_3314858_nxy8ddpii2n.woff?t=1650011173145') format('woff'),
+       url('//at.alicdn.com/t/font_3314858_nxy8ddpii2n.ttf?t=1650011173145') format('truetype');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    /* font-size: 16px; */
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.icon-xiai_o:before {
+  content: "\ebaf";
+}
+
+.icon-hunliriqi:before {
+  content: "\e6a2";
+  font-size: 20px;
+  /* color: #ff557f; */
+}
+
+.icon-reqiqiu:before {
+  content: "\e6a3";
+}
+
+.icon-gaobai:before {
+  content: "\e6a4";
+  /* color: #000080; */
+  font-size: 16px;
+}	
+
+.icon-zuanjie:before {
+  content: "\e6a5";
+}
+
+.icon-hunsha:before {
+  content: "\e6a6";
+}
+
+.icon-xinxinxiangyin:before {
+  content: "\e6a7";
+  color: red;
+  font-size: 20px;
+}
+
+.icon-hunchuang:before {
+  content: "\e6a8";
+}
+
+.icon-qiqiu:before {
+  content: "\e6a9";
+  font-size: 20px;
+  color: pink;
+}
+
+.icon-huanqing:before {
+  content: "\e6aa";
+  font-size: 1.25rem;
+  color: pink;
+}
+
+.icon-weixin1:before {
+    content: "\e600";
+    font-size: 23px;
+    color: rgb(0, 192, 128);
+}
+
+.icon-QQ:before {
+    content: "\e882";
+    font-size: 23px;
+    color: rgba(28, 210, 234, 0.938);
+}
+
+.icon-cmd:before {
+    content: "\e8aa";
+    color: rgb(255, 255, 255);
+}
+
+.icon-java:before {
+    content: "\e60f";
+}
+
+.icon-Python:before {
+    content: "\ed99";
+}
+
+.icon-MySQL-icon-02:before {
+    content: "\e638";
+    color: rgba(28, 210, 234, 0.938);
+}
+
+.icon-social-qq:before {
+    content: "\e626";
+}
+
+.icon-weixin:before {
+    content: "\e62c";
+}
+
+.icon-wenjianjia:before {
+    content: "\e60d";
+}
+
+.icon-JS-file:before {
+    content: "\e60e";
+}
+
+.icon-gitee:before {
+    content: "\e60c";
+    color: rgb(212, 8, 8);
+}
