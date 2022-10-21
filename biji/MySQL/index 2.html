@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL笔记 | Muzi-VAJ</title><meta name="keywords" content="MySQL"><meta name="author" content="YY"><meta name="copyright" content="YY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文主要是自己学习记录的MySQL笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MySQL笔记">
+<meta property="og:url" content="http://muzi981.github.io/biji/MySQL/index.html">
+<meta property="og:site_name" content="Muzi-VAJ">
+<meta property="og:description" content="本文主要是自己学习记录的MySQL笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-11-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-30T16:00:00.000Z">
+<meta property="article:author" content="YY">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/favicon.png"><link rel="canonical" href="http://muzi981.github.io/biji/MySQL/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL笔记',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-03-31 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/css/function.min.css"><link rel="stylesheet" href="/css/iconfont.css"><link rel="stylesheet" href="/css/shubiao.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="Muzi-VAJ" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/biaoqian/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/fenlei/"><i class="fa-fw fas fa-tasks"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas iconfont icon-wenjianjia"></i><span> 笔记</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/biji/Linux/"><i class="fa-fw iconfont icon-cmd"></i><span> Linux</span></a></li><li><a class="site-page child" href="/biji/MySQL/"><i class="fa-fw iconfont icon-MySQL-icon-02"></i><span> MySql</span></a></li><li><a class="site-page child" href="/biji/JavaScript/"><i class="fa-fw iconfont icon-JS-file"></i><span> JavaScript</span></a></li><li><a class="site-page child" href="/biji/Python/"><i class="fa-fw iconfont icon-Python"></i><span> Python</span></a></li><li><a class="site-page child" href="/biji/Java/"><i class="fa-fw iconfont icon-java"></i><span> Java</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 我与她</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="https://muzi981.github.io/I-LOVE-YOU_VAJ"><i class="fa-fw fas fa-heart"></i><span> I With She</span></a></li><li><a class="site-page child" href="/wyt/zs/"><i class="fa-fw fas fa-heart"></i><span> 专属的浪漫</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas iconfont icon-hunliriqi"></i><span> Love code</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Love%20code/bbs/"><i class="fa-fw iconfont icon-xinxinxiangyin"></i><span> 表白树</span></a></li><li><a class="site-page child" href="/Love%20code/520/"><i class="fa-fw iconfont icon-qiqiu"></i><span> 浪漫520</span></a></li><li><a class="site-page child" href="/Love%20code/shnh/"><i class="fa-fw iconfont icon-huanqing"></i><span> 送花男孩</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> ategories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/b-k/log.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Muzi-VAJ</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/biaoqian/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/fenlei/"><i class="fa-fw fas fa-tasks"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas iconfont icon-wenjianjia"></i><span> 笔记</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/biji/Linux/"><i class="fa-fw iconfont icon-cmd"></i><span> Linux</span></a></li><li><a class="site-page child" href="/biji/MySQL/"><i class="fa-fw iconfont icon-MySQL-icon-02"></i><span> MySql</span></a></li><li><a class="site-page child" href="/biji/JavaScript/"><i class="fa-fw iconfont icon-JS-file"></i><span> JavaScript</span></a></li><li><a class="site-page child" href="/biji/Python/"><i class="fa-fw iconfont icon-Python"></i><span> Python</span></a></li><li><a class="site-page child" href="/biji/Java/"><i class="fa-fw iconfont icon-java"></i><span> Java</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 我与她</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="https://muzi981.github.io/I-LOVE-YOU_VAJ"><i class="fa-fw fas fa-heart"></i><span> I With She</span></a></li><li><a class="site-page child" href="/wyt/zs/"><i class="fa-fw fas fa-heart"></i><span> 专属的浪漫</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas iconfont icon-hunliriqi"></i><span> Love code</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Love%20code/bbs/"><i class="fa-fw iconfont icon-xinxinxiangyin"></i><span> 表白树</span></a></li><li><a class="site-page child" href="/Love%20code/520/"><i class="fa-fw iconfont icon-qiqiu"></i><span> 浪漫520</span></a></li><li><a class="site-page child" href="/Love%20code/shnh/"><i class="fa-fw iconfont icon-huanqing"></i><span> 送花男孩</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> ategories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">MySQL笔记</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h2 id="一、Navicat使用"><a href="#一、Navicat使用" class="headerlink" title="一、Navicat使用"></a>一、Navicat使用</h2><ul>
+<li>连接MySQL之后，首先要创建数据库</li>
+<li>用鼠标右键选择新建数据库</li>
+<li>打开数据库，新建查询</li>
+</ul>
+<h2 id="二、SQL注释"><a href="#二、SQL注释" class="headerlink" title="二、SQL注释"></a>二、SQL注释</h2><ul>
+<li>行注释： –注释</li>
+<li>多行注释： &#x2F;* 注释 *&#x2F;</li>
+</ul>
+<h2 id="三、SQL常用数据类型"><a href="#三、SQL常用数据类型" class="headerlink" title="三、SQL常用数据类型"></a>三、SQL常用数据类型</h2><ul>
+<li>整数：int            int unsigned，代表设置一个无符号的整数；</li>
+<li>小整数：tinyint       tinyint unsigned，代表一个无符号的小整数；</li>
+<li>小数：decimal   如decimal(5,2) ,表示共存5个数，小数占2位，不能超过2位；整数占3位，不能超过3位；</li>
+<li>字符串：varchar   如varchar(3)：表示最多存储3个字符，一个中午或一个字母都占一个字符；</li>
+<li>日期时间： datetime</li>
+<li><img src="F:\桌面\测试学习\img\image-20220303094000032.png" alt="image-20220303094000032"></li>
+<li><img src="F:\桌面\测试学习\img\image-20220303100719663.png" alt="image-20220303100719663"></li>
+</ul>
+<h2 id="四、约束"><a href="#四、约束" class="headerlink" title="四、约束"></a>四、约束</h2><ul>
+<li>主键（primary key）：能唯一标识表中的每一条记录的属性值  一般在一张数据表中只需要有一个主键就可以了  ；主键的作用：主要用于保证数据表内的数据每一条的顺序是固定的，不会由于删除或者增加数据，而导致数据乱序；<ul>
+<li><img src="F:\桌面\测试学习\img\image-20220303101603202.png" alt="image-20220303101603202"></li>
+<li><img src="F:\桌面\测试学习\img\image-20220303102743796.png" alt="image-20220303102743796"></li>
+</ul>
+</li>
+<li>非空（not null）：此字段不允许填写空值</li>
+<li>唯一（unique）：此字段的值不允许重复  （如身份证输入就必须唯一） <ul>
+<li><img src="F:\桌面\测试学习\img\image-20220303105004483.png" alt="image-20220303105004483"></li>
+<li><img src="F:\桌面\测试学习\img\image-20220303105117460.png" alt="image-20220303105117460"></li>
+</ul>
+</li>
+<li>默认值（default）：当不填写此值时会使用默认值，如果填写时以填写为准</li>
+<li>外键（foreign key）：一个表中的一个字段引用另一个表的主键</li>
+</ul>
+<h2 id="五、数据库中的元素"><a href="#五、数据库中的元素" class="headerlink" title="五、数据库中的元素"></a>五、数据库中的元素</h2><ul>
+<li><p>数据库：——database</p>
+</li>
+<li><p>表（table）：</p>
+<p>表（table），数据库中存储数据的基本单位，表是一个由行和列组成的二维</p>
+</li>
+<li><p>字段（列）：—field</p>
+</li>
+<li><p>记录（行）：–record</p>
+</li>
+</ul>
+<h2 id="六、数据库的操作"><a href="#六、数据库的操作" class="headerlink" title="六、数据库的操作"></a>六、数据库的操作</h2><h3 id="1-主要操作"><a href="#1-主要操作" class="headerlink" title="1.主要操作"></a>1.主要操作</h3><ul>
+<li>创建数据库</li>
+<li>使用数据库</li>
+<li>修改数据库</li>
+<li>删除数据库</li>
+</ul>
+<h3 id="2-创建数据库"><a href="#2-创建数据库" class="headerlink" title="2.创建数据库"></a>2.创建数据库</h3><ul>
+<li><p>语法格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建数据库</span><br><span class="line"><span class="keyword">create</span> database 数据库名 [charset] [字符编码] [<span class="keyword">collate</span>] [校验规则];</span><br><span class="line"><span class="keyword">create</span> database 数据库名 charset<span class="operator">=</span>utf8 <span class="keyword">collate</span><span class="operator">=</span>utf8_general_ci;</span><br><span class="line">#查看数据库</span><br><span class="line">#查询 创建 数据库 数据库名;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> database 数据库名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#创建一个叫Python的数据库</span><br><span class="line"><span class="keyword">create</span> database Python charset<span class="operator">=</span>utf8 <span class="keyword">collate</span><span class="operator">=</span>utf8_general_ci;</span><br><span class="line">#查看数据库</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> database Python;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询窗口中有多个SQL语句</p>
+<p><img src="F:\桌面\测试学习\img\image-20220303112925498.png" alt="image-20220303112925498"></p>
+</li>
+</ul>
+<h3 id="3-使用数据库（切换数据库）"><a href="#3-使用数据库（切换数据库）" class="headerlink" title="3.使用数据库（切换数据库）"></a>3.使用数据库（切换数据库）</h3><ul>
+<li><p>语法格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#使用（打开）数据库</span><br><span class="line">use 数据库名;</span><br><span class="line">#查看当前使用的数据库</span><br><span class="line"><span class="keyword">select</span> database();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#使用（打开）Python数据库</span><br><span class="line">use Python;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-修改数据库"><a href="#4-修改数据库" class="headerlink" title="4.修改数据库"></a>4.修改数据库</h3><ul>
+<li><p>语法格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> database 数据库名</span><br><span class="line"><span class="keyword">default</span> <span class="type">character</span> <span class="keyword">set</span> 字符集名</span><br><span class="line"><span class="keyword">default</span> <span class="keyword">collate</span> 校对规则名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建testpython数据库,字符集为gb2312</span><br><span class="line"><span class="keyword">create</span> database tesrpython charset<span class="operator">=</span>gb2312</span><br><span class="line">#修改testpython数据库指定字符集修改为utf8mb4，默认校对规则utf8mb4_general_ci</span><br><span class="line"><span class="keyword">alter</span> database testpython</span><br><span class="line"><span class="keyword">default</span> <span class="type">character</span> <span class="keyword">set</span> utf9mb4</span><br><span class="line"><span class="keyword">default</span> <span class="keyword">collate</span> utf8mb4_general_ci;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-删除数据库"><a href="#5-删除数据库" class="headerlink" title="5.删除数据库"></a>5.删除数据库</h3><ul>
+<li><p>语法格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database 数据库名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database Python;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="6-数据库其他操作"><a href="#6-数据库其他操作" class="headerlink" title="6.数据库其他操作"></a>6.数据库其他操作</h3><ul>
+<li><p>查看所有数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> database;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="7-重点：数据库的备份"><a href="#7-重点：数据库的备份" class="headerlink" title="7.重点：数据库的备份"></a>7.重点：数据库的备份</h3><ul>
+<li>应用场景</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">说明：在测试工作中，为了防止对数据库产生错误操作，或产生垃圾数据，都需要在操作前，适当对数据库进行备份操作。</span><br><span class="line">垃圾数据：例如在自动化测试中，对注册模块操作生成的所有数据，属于典型的垃圾数据，应该清理；</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数据库备份</p>
+<p><img src="F:\桌面\测试学习\img\image-20220303170854085.png" alt="image-20220303170854085"></p>
+<p><img src="F:\桌面\测试学习\img\image-20220303171046876.png" alt="image-20220303171046876"></p>
+</li>
+<li><p>利用工具</p>
+</li>
+</ul>
+<h2 id="七、数据库-表-操作"><a href="#七、数据库-表-操作" class="headerlink" title="七、数据库 表 操作"></a>七、数据库 表 操作</h2><h3 id="1-使用-CREATE-创建-数据库表"><a href="#1-使用-CREATE-创建-数据库表" class="headerlink" title="1.使用 CREATE 创建 数据库表"></a>1.使用 CREATE 创建 数据库表</h3><ul>
+<li><p>语法:</p>
+<p>create table 表名(</p>
+<p>​    字段名 数据类型,</p>
+<p>​    字段名 数据类型</p>
+<p>​    ….</p>
+<p>);</p>
+</li>
+<li><p>例子：创建一个表a，字段要求：name(姓名)，数据类型：varchar（字符串）,长度为10</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> a(</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表b：</p>
+<ul>
+<li>字段要求：name（姓名），数据类型为varchar（字符串），长度10；</li>
+<li>height（身高），数据类型为decimal（小数），一共5位，其中3位整数，2位小数；</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> b(</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">    heigh <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表c：</p>
+<ul>
+<li>字段要求：id：数据类型int</li>
+<li>name（姓名）：数据类型varchar长度10；</li>
+<li>age（年龄）：数据类型tinyint unsigned 无符号小整数；</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> c(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">    age tinyint unsigned</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个student表：做一个完整的sql语句创建</p>
+<ul>
+<li>–unsigned：无符号</li>
+<li>primary key：主键</li>
+<li>auto_increment：自动递增</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student(</span><br><span class="line">    #字段名 [数据类型：<span class="type">int</span> unsigned为无符号整数] [设置了主键 <span class="keyword">primary</span> key为主键] [auto_increment为设置字段为递增，自动递增] </span><br><span class="line">	id <span class="type">int</span> unsigned <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">    age <span class="type">int</span> unsigned,</span><br><span class="line">    height <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h5 id="扩展：判断表是否存在，存在时先删除在创建"><a href="#扩展：判断表是否存在，存在时先删除在创建" class="headerlink" title="扩展：判断表是否存在，存在时先删除在创建"></a>扩展：判断表是否存在，存在时先删除在创建</h5><p>drop table :删除表；</p>
+<p>if exists student：如果存在student表 就删除；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">exists</span> student; </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student(</span><br><span class="line">  id <span class="type">int</span> unsigned <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">  name <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">  age <span class="type">int</span> unsigned,</span><br><span class="line">  heigh <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h5 id="扩展：通过Navicat工具获取创建表语句的方法"><a href="#扩展：通过Navicat工具获取创建表语句的方法" class="headerlink" title="扩展：通过Navicat工具获取创建表语句的方法"></a>扩展：通过Navicat工具获取创建表语句的方法</h5><p><img src="F:\桌面\测试学习\img\image-20220307112354726.png" alt="image-20220307112354726"></p>
+</li>
+</ul>
+<h3 id="2-查看表"><a href="#2-查看表" class="headerlink" title="2.查看表"></a>2.查看表</h3><ul>
+<li><p>查看表信息</p>
+<p>语法结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前数据库下有多少表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> tables;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例：</p>
+<p>语法结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#查看表信息</span><br><span class="line">#<span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> student;</span><br><span class="line">#结果</span><br><span class="line">#<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `student` (</span><br><span class="line">#  `id` <span class="type">int</span> unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">#  `name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">#  `age` <span class="type">int</span> unsigned <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">#  `heigh` <span class="type">decimal</span>(<span class="number">5</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">#  <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line"># ) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_0900_ai_ci;</span><br><span class="line"></span><br><span class="line">#查看当前数据库下有多少表</span><br><span class="line"><span class="keyword">show</span> tables;</span><br><span class="line">#结果</span><br><span class="line">a</span><br><span class="line">heh</span><br><span class="line">student</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-查看表结构-字段"><a href="#3-查看表结构-字段" class="headerlink" title="3.查看表结构(字段)"></a>3.查看表结构(字段)</h2><ul>
+<li><p>语法结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">desc</span> 表名;</span><br><span class="line"><span class="keyword">desc</span> student;</span><br><span class="line">#运行结果如下：主要查询是该表的结构</span><br></pre></td></tr></table></figure>
+
+<p><img src="F:\桌面\测试学习\img\image-20220307154515913.png" alt="image-20220307154515913"></p>
+</li>
+</ul>
+<h2 id="4-删除表"><a href="#4-删除表" class="headerlink" title="4.删除表"></a>4.删除表</h2><ul>
+<li><p>语法结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">格式一：</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br><span class="line">格式二：</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">exists</span> 表名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例删除学生表</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> studemt;</span><br><span class="line">#下面语法带了一个判断</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> if <span class="keyword">exists</span> student;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="八、数据操作-增删改-–查询–"><a href="#八、数据操作-增删改-–查询–" class="headerlink" title="八、数据操作-增删改 –查询–"></a>八、数据操作-增删改 –查询–</h1><h4 id="目的就是：会使用SQL语句实现数据的新增、修改、删除、查询，操作；"><a href="#目的就是：会使用SQL语句实现数据的新增、修改、删除、查询，操作；" class="headerlink" title="目的就是：会使用SQL语句实现数据的新增、修改、删除、查询，操作；"></a>目的就是：会使用SQL语句实现数据的新增、修改、删除、查询，操作；</h4><h2 id="1-添加数据（新增数据）（insert）"><a href="#1-添加数据（新增数据）（insert）" class="headerlink" title="1.添加数据（新增数据）（insert）"></a>1.添加数据（新增数据）（insert）</h2><h4 id="1-1添加单行数据"><a href="#1-1添加单行数据" class="headerlink" title="1.1添加单行数据"></a>1.1添加单行数据</h4><ul>
+<li><p>格式一：所有字段设置值，值的顺序与表中字段的顺序对应</p>
+<ul>
+<li><p>说明：主键列是自动增长，插入时需要占位，通常使用0或者default或者null来占位，插入成功后以实际数据为准；</p>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>数据值需要和表中字段一一对应</li>
+<li>主键列是自动增长，插入时需要占位，通常使用0或者default或者null来占位，插入成功后以实际数据为准；</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span>(....)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例：插入一个学生，设置所有字段的信息</p>
+<p>注意：下面插入的数据，其数据必须和字段一一对应，如果有的字段不想设置，需要插入占位。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">&#x27;muzi&#x27;</span>,<span class="number">22</span>,<span class="number">177</span>,<span class="number">56</span>) </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>格式二：部分字段设置值，值的顺序与给出的字段顺序对应</p>
+<p>注意：该方式，插入的数值与其字段名，对应即可，前面写什么字段，后面值对应什么；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 (字段名<span class="number">1</span> ,....) <span class="keyword">values</span> (值<span class="number">1</span>,....)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>例：插入一个学生，只设置姓名和年龄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name,age) <span class="keyword">values</span>(<span class="string">&#x27;muzi&#x27;</span>,<span class="string">&#x27;21&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2添加多行数据"><a href="#1-2添加多行数据" class="headerlink" title="1.2添加多行数据"></a>1.2添加多行数据</h4><ul>
+<li><p>方式一：写多条insert 语句，语句之间用英文分号隔开</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name) <span class="keyword">values</span>(<span class="string">&#x27;muzi&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name) <span class="keyword">values</span>(<span class="string">&#x27;muzi1&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">&#x27;muzi2&#x27;</span>,<span class="number">23</span>,<span class="number">167</span>,<span class="number">56</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">&#x27;muzi3&#x27;</span>,<span class="number">23</span>,<span class="number">167</span>,<span class="number">56</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：写一条insert语句，设置多条数据，数据之间用英文逗号隔开</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#格式一：<span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span>(...),(...)</span><br><span class="line">例：插入多个学生，设置所有字段的信息</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">&#x27;muzi3&#x27;</span>,<span class="number">23</span>,<span class="number">167</span>,<span class="number">56</span>),(<span class="number">0</span>,<span class="string">&#x27;muzi4&#x27;</span>,<span class="number">23</span>,<span class="number">167</span>,<span class="number">56</span>)</span><br><span class="line">#格式二：<span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...),(值<span class="number">2</span>,....)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student(name,age) <span class="keyword">values</span>(<span class="string">&#x27;muzi5&#x27;</span>,<span class="number">21</span>),(<span class="string">&#x27;muzi6&#x27;</span>,<span class="number">22</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-修改字段值（upate）"><a href="#2-修改字段值（upate）" class="headerlink" title="2.修改字段值（upate）"></a>2.修改字段值（upate）</h2><ul>
+<li><p>语法格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="number">1</span><span class="operator">=</span>值<span class="number">1</span>,列<span class="number">2</span><span class="operator">=</span>值<span class="number">2.</span>..<span class="keyword">where</span> 条件</span><br></pre></td></tr></table></figure>
+
+<p><img src="F:\桌面\测试学习\img\image-20220309175710489.png" alt="image-20220309175710489"></p>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#例：修改id为<span class="number">5</span>的学生数据，姓名改成 muzi10，年龄改成<span class="number">36</span></span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> name<span class="operator">=</span><span class="string">&#x27;muzi10&#x27;</span>,age<span class="operator">=</span><span class="number">36</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">5</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-删除表记录（delete）"><a href="#3-删除表记录（delete）" class="headerlink" title="3.删除表记录（delete）"></a>3.删除表记录（delete）</h2><ul>
+<li><p>语法结构</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#格式一：</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<p>注意：where 不能省略，否则会删除所有数据;</p>
+</li>
+<li><p>举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#例：删除id为<span class="number">6</span>的学生数据</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student <span class="keyword">where</span> id<span class="operator">=</span><span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="F:\桌面\测试学习\img\image-20220309180030539.png" alt="image-20220309180030539"></p>
+</li>
+<li><h4 id="扩展1：逻辑删除（又名：假删）"><a href="#扩展1：逻辑删除（又名：假删）" class="headerlink" title="扩展1：逻辑删除（又名：假删）"></a>扩展1：逻辑删除（又名：假删）</h4><h5 id="对于重要的数据，不能轻易执行delete-语句进行删除。因为一旦删除，数据将无法恢复，所有可以继续逻辑删除。"><a href="#对于重要的数据，不能轻易执行delete-语句进行删除。因为一旦删除，数据将无法恢复，所有可以继续逻辑删除。" class="headerlink" title="对于重要的数据，不能轻易执行delete 语句进行删除。因为一旦删除，数据将无法恢复，所有可以继续逻辑删除。"></a>对于重要的数据，不能轻易执行delete 语句进行删除。因为一旦删除，数据将无法恢复，所有可以继续逻辑删除。</h5><ol>
+<li><p>给表添加字段，代表数据是否删除，一般起名isdelete，0代表未删除，1代表删除，默认为0；</p>
+<p><img src="F:\桌面\测试学习\img\image-20220310160509060.png" alt="image-20220310160509060"></p>
+<p><img src="F:\桌面\测试学习\img\image-20220310160816486.png" alt="image-20220310160816486"></p>
+</li>
+<li><p>当要删除某条数据时，只需要设置这条数据的isdelete字段为1</p>
+<ul>
+<li>如果要删除一条数据时，这样做其实对于这样的一条数据在数据库中是没有被删除，只不过通过表示来，提示这个数据已删除；<ul>
+<li>标记为删除的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>以后在查询数据时，只查询isdelete为0的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>给学生表添加字段（isdelete），默认值为<span class="number">0</span></span><br><span class="line">如果表中已有数据，需要把所有的数据isdelete字段更新为<span class="number">0</span></span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> isdelete<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"><span class="number">2.</span>删除id为<span class="number">1</span>的学生</span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> isdelete<span class="operator">=</span><span class="number">1</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="number">3.</span>查询所有未删除的数据</span><br><span class="line"><span class="keyword">select</span><span class="operator">*</span><span class="keyword">from</span> student <span class="keyword">where</span> isdelete<span class="operator">=</span><span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>》修改要删除的数据的特定字段为删除状态</span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> isdelete<span class="operator">=</span><span class="number">1</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">4</span>;</span><br><span class="line"><span class="number">2</span>》查询所有isdelete 字段为<span class="number">0</span>的数据</span><br><span class="line"># <span class="operator">*</span>：代表所有数据 <span class="keyword">select</span><span class="operator">*</span><span class="keyword">from</span>：代表查询所有数据</span><br><span class="line"><span class="keyword">select</span><span class="operator">*</span><span class="keyword">from</span> student <span class="keyword">where</span> isdelete<span class="operator">=</span><span class="number">0</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="拓展2：其他数据删除方法"><a href="#拓展2：其他数据删除方法" class="headerlink" title="拓展2：其他数据删除方法"></a>拓展2：其他数据删除方法</h4><ol>
+<li><h5 id="delete-from-表名"><a href="#delete-from-表名" class="headerlink" title="delete from 表名  :"></a>delete from 表名  :</h5><p>delete from student;</p>
+<p>删除所有数据，但是不重置主键字段的计数；</p>
+</li>
+<li><h5 id="truncate-table-表名"><a href="#truncate-table-表名" class="headerlink" title="truncate table 表名;"></a>truncate table 表名;</h5><p>truncate table student;</p>
+<p>删除所有数据，并且重置主键字段的计数;</p>
+</li>
+<li><h5 id="drop-table-表名"><a href="#drop-table-表名" class="headerlink" title="drop table 表名;"></a>drop table 表名;</h5><p>drop table student；</p>
+<p>直接删除整个数据表，意味着字段和数据均不存在，整个表都没了；</p>
+</li>
+<li><h5 id="对于图形化操作"><a href="#对于图形化操作" class="headerlink" title="对于图形化操作"></a>对于图形化操作</h5><p><img src="F:\桌面\测试学习\img\image-20220310163645751.png" alt="image-20220310163645751"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="4-查询操作"><a href="#4-查询操作" class="headerlink" title="4.查询操作"></a>4.查询操作</h2><p><img src="F:\桌面\测试学习\img\image-20220310173124607.png" alt="image-20220310173124607"></p>
+<h3 id="在命令列界面操作主要-在没有图形化界面下，这些是基本的"><a href="#在命令列界面操作主要-在没有图形化界面下，这些是基本的" class="headerlink" title="在命令列界面操作主要(在没有图形化界面下，这些是基本的)"></a>在命令列界面操作主要(在没有图形化界面下，这些是基本的)</h3><p><img src="F:\桌面\测试学习\img\image-20220310173753445.png" alt="image-20220310173753445"></p>
+<p><img src="F:\桌面\测试学习\img\image-20220310174439478.png" alt="image-20220310174439478"></p>
+<p><img src="F:\桌面\测试学习\img\image-20220310175318848.png" alt="image-20220310175318848"></p>
+<ol>
+<li><p>查询所有数据</p>
+<p>select * from 表名;</p>
+</li>
+<li><p>查询部分字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>查询部分字段是，先要查询整个表，根据表中需要的字段在重新重新；</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名；</span><br><span class="line"><span class="keyword">select</span> 字段名 <span class="keyword">from</span> 表名；</span><br></pre></td></tr></table></figure></li>
+</ol>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">YY</div><div class="author-info__description">原来你是我最想留住的幸运</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/muzi981"><i class="fab fa-github"></i><span>Muzi</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/muzi981" target="_blank" title=""><i class="fab iconfont icon-weixin1"></i></a><a class="social-icon" href="https://github.com/muzi981" target="_blank" title=""><i class="fas iconfont icon-QQ"></i></a><a class="social-icon" href="https://gitee.com/muzu" target="_blank" title=""><i class="fab iconfont icon-gitee"></i></a><a class="social-icon" href="https://github.com/muzi981" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2428412161@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/13/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/b-k/mmmm.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动化测试"/></a><div class="content"><a class="title" href="/2022/04/13/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a><time datetime="2022-04-12T16:00:00.000Z" title="发表于 2022-04-13 00:00:00">2022-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/01/%E8%A1%A8%E7%99%BD%E6%A0%91%E4%BB%A3%E7%A0%81/" title="表白树代码"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/b-k/mmmm.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="表白树代码"/></a><div class="content"><a class="title" href="/2022/04/01/%E8%A1%A8%E7%99%BD%E6%A0%91%E4%BB%A3%E7%A0%81/" title="表白树代码">表白树代码</a><time datetime="2022-03-31T16:00:00.000Z" title="发表于 2022-04-01 00:00:00">2022-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/12/MySQL%E7%AC%94%E8%AE%B0/" title="MySQL笔记"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/b-k/log.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL笔记"/></a><div class="content"><a class="title" href="/2021/11/12/MySQL%E7%AC%94%E8%AE%B0/" title="MySQL笔记">MySQL笔记</a><time datetime="2021-11-11T16:00:00.000Z" title="发表于 2021-11-12 00:00:00">2021-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/02/03/Linux%E7%AC%94%E8%AE%B0/" title="Linux笔记"><img src="https://cdn.jsdelivr.net/gh/muzi981/tuku@main/bk/b-k/mmmm.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux笔记"/></a><div class="content"><a class="title" href="/2020/02/03/Linux%E7%AC%94%E8%AE%B0/" title="Linux笔记">Linux笔记</a><time datetime="2020-02-02T16:00:00.000Z" title="发表于 2020-02-03 00:00:00">2020-02-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">博客</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A1%A8%E7%99%BD/"><span class="card-category-list-name">表白</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">自动化测试</a> <a href="/tags/%E8%A1%A8%E7%99%BD/" style="font-size: 1.1em; color: #999">表白</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">11 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">11 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/02/"><span class="card-archive-list-date">11 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">4</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-10-21T03:25:36.187Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://12-1309606677.cos.ap-nanjing.myqcloud.com/boke-ye/background/zt1.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 By YY</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="/js/cursor.js"></script><script src="/js/icon.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/theme_f/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
