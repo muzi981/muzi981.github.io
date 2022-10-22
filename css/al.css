@@ -2,17 +2,145 @@
   font-family: "iconfont"; /* Project id 3721460 */
   /* Color fonts */
   src: 
-       url('//at.alicdn.com/t/c/font_3721460_tsvrzo3wtmq.woff2?t=1666345121435') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3721460_tsvrzo3wtmq.woff?t=1666345121435') format('woff'),
-       url('//at.alicdn.com/t/c/font_3721460_tsvrzo3wtmq.ttf?t=1666345121435') format('truetype');
+       url('//at.alicdn.com/t/c/font_3721460_2gamu7gf87x.woff2?t=1666420424975') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3721460_2gamu7gf87x.woff?t=1666420424975') format('woff'),
+       url('//at.alicdn.com/t/c/font_3721460_2gamu7gf87x.ttf?t=1666420424975') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mysql:before {
+  content: "\e69b";
+}
+
+.icon-listening:before {
+  content: "\e62c";
+}
+
+.icon-yinlecidai:before {
+  content: "\e605";
+}
+
+.icon-shumu:before {
+  content: "\e7b0";
+}
+
+.icon-wenjianjia:before {
+  content: "\e60f";
+}
+
+.icon-nanhai:before {
+  content: "\e610";
+}
+
+.icon-LINKBUILDING:before {
+  content: "\e8fa";
+}
+
+.icon-winter-gloves:before {
+  content: "\e6fd";
+}
+
+.icon-love-letter-:before {
+  content: "\ee62";
+}
+
+.icon-java:before {
+  content: "\e63a";
+}
+
+.icon-shipin:before {
+  content: "\e609";
+}
+
+.icon-python:before {
+  content: "\e690";
+}
+
+.icon-xiaonvhai:before {
+  content: "\e725";
+}
+
+.icon-wode:before {
+  content: "\f801";
+}
+
+.icon-githubb:before {
+  content: "\e63e";
+}
+
+.icon-weixin:before {
+  content: "\e6ea";
+}
+
+.icon-MAILBOX:before {
+  content: "\e602";
+}
+
+.icon-QQ:before {
+  content: "\e668";
+}
+
+.icon-gitee:before {
+  content: "\e60d";
+}
+
+.icon-yanglazhuye:before {
+  content: "\e606";
+}
+
+.icon-mulu:before {
+  content: "\e60c";
+}
+
+.icon-bijiben:before {
+  content: "\e632";
+}
+
+.icon--:before {
+  content: "\e667";
+}
+
+.icon-bixin:before {
+  content: "\e60e";
+}
+
+.icon-valentine_-cupid-love-heart-god:before {
+  content: "\e761";
+}
+
+.icon-linux:before {
+  content: "\e80b";
+}
+
+.icon-guidang:before {
+  content: "\eca6";
+}
+
+.icon-fenlei:before {
+  content: "\100a7";
+}
+
+.icon-js:before {
+  content: "\e639";
+}
+
+.icon-caomei:before {
+  content: "\e63b";
+}
+
+.icon-mangguo:before {
+  content: "\e63c";
+}
+
+.icon-pingguo:before {
+  content: "\e63d";
 }
 
 .icon-gongzuo:before {

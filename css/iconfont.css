@@ -6,12 +6,11 @@
 }
 .iconfont {
     font-family: "iconfont" !important;
-    /* font-size: 16px; */
+    font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 .icon {
     width: 1em;
     height: 1em;
@@ -119,4 +118,64 @@
 .icon-gitee:before {
     content: "\e60c";
     color: rgb(212, 8, 8);
+}
+
+.icon-yanglazhuye:before {
+  content: "\e606";
+}
+
+.icon-mulu:before {
+  content: "\e60c";
+}
+
+.icon-bijiben:before {
+  content: "\e632";
+}
+
+.icon--:before {
+  content: "\e667";
+}
+
+.icon-bixin:before {
+  content: "\e60e";
+}
+
+.icon-valentine_-cupid-love-heart-god:before {
+  content: "\e761";
+}
+
+.icon-linux:before {
+  content: "\e80b";
+}
+
+.icon-guidang:before {
+  content: "\eca6";
+}
+
+.icon-fenlei:before {
+  content: "\100a7";
+}
+
+.icon-js:before {
+  content: "\e639";
+}
+
+.icon-caomei:before {
+  content: "\e63b";
+}
+
+.icon-mangguo:before {
+  content: "\e63c";
+}
+
+.icon-pingguo:before {
+  content: "\e63d";
+}
+
+.icon-gongzuo:before {
+  content: "\e60a";
+}
+
+.icon-jita:before {
+  content: "\e60b";
 }
